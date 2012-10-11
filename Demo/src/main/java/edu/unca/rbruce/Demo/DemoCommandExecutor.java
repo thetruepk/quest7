@@ -1,5 +1,6 @@
 package edu.unca.rbruce.Demo;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -50,6 +51,18 @@ public class DemoCommandExecutor implements CommandExecutor {
 				&& sender.hasPermission("demo.message")) {
 			this.plugin.getConfig().set("sample.message",
 					Joiner.on(' ').join(args));
+			return true;
+		} else if (args[0].equalsIgnoreCase("kick")
+				&& sender.hasPermission("demo.kick")) {
+			Player fred = plugin.getServer().getPlayer(args[1]);
+			if (fred != null) {
+				fred.kickPlayer("you've been kicked off!");
+				sender.sendMessage(ChatColor.RED + args[1] + " was kicked off");
+				plugin.logger.info(args[1] + " has been kicked off");
+			} else {
+				sender.sendMessage(ChatColor.RED + args[1]
+						+ " is not logged on");
+			}
 			return true;
 		} else {
 			return false;

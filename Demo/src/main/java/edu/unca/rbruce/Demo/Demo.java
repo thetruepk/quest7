@@ -9,8 +9,14 @@ public class Demo extends JavaPlugin {
 	/*
 	 * This is called when your plug-in is enabled
 	 */
+	DemoLogger logger;
+
 	@Override
 	public void onEnable() {
+		// create a logger and use it
+		logger = new DemoLogger(this);
+		logger.info("plugin enabled");
+
 		// save the configuration file
 		saveDefaultConfig();
 
@@ -26,6 +32,7 @@ public class Demo extends JavaPlugin {
 	 */
 	@Override
 	public void onDisable() {
+		logger.info("plugin disabled");
 
 	}
 
