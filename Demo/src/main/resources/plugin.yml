@@ -25,7 +25,7 @@ permissions:
         description: Gives Wood
       demo.tnt:
         description: Gives Tnt
-      demo.fire
+      demo.fire:
         description: gives fires
-      demo.sword
+      demo.sword:
         description: gives a dimand sword
