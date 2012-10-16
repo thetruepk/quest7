@@ -21,3 +21,11 @@ permissions:
         description: give the player a block of cake
       demo.kick:
         description: kick the specified player out of the game
+      demo.wood:
+        description: Gives Wood
+      demo.tnt:
+        description: Gives Tnt
+      demo.fire
+        description: gives fires
+      demo.sword
+        description: gives a dimand sword

@@ -2,12 +2,15 @@ package edu.unca.rbruce.Demo;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 import com.google.common.base.Joiner;
 
@@ -36,17 +39,44 @@ public class DemoCommandExecutor implements CommandExecutor {
 			return false;
 			// the cake will appear on the ground but not
 			// necessarily where the player is looking
-		} else if (args[0].equalsIgnoreCase("cake")) {
-			Player fred = (Player) sender;
-			Location loc = fred.getLocation();
-			World w = loc.getWorld();
-			loc.setX(loc.getX() + 1);
-			Block b = w.getBlockAt(loc);
-			b.setTypeId(92);
+		} else if (args[0].equalsIgnoreCase("Firez")) {
+			Player p = (Player)sender;
+			PlayerInventory inventory = p.getInventory();
+			ItemStack shovel = new ItemStack(Material.FIRE,42);
+			inventory.addItem(shovel);
+			plugin.getLogger().info("you have fire");
+			plugin.logger.info("Gave Fire to " + p);
 			return true;
 			// the stored message now always begins with
 			// the word "message"--do you know how to easily
 			// fix that problem?
+		} else if (args[0].equalsIgnoreCase("tnt")) {
+			Player p = (Player)sender;
+			PlayerInventory inventory = p.getInventory();
+			ItemStack shovel = new ItemStack(Material.TNT,10);
+			inventory.addItem(shovel);
+			plugin.getLogger().info("you have tnt");
+			plugin.logger.info("Gave tnt to " + p);
+			return true;
+			// the stored message now always begins with
+			// the word "message"--do you know how to easily
+			// fix that problem?
+		} else if (args[0].equalsIgnoreCase("wood")) {
+			Player p = (Player)sender;
+			PlayerInventory inventory = p.getInventory();
+			ItemStack shovel = new ItemStack(Material.WOOD,42);
+			inventory.addItem(shovel);
+			plugin.getLogger().info("you have wood");
+			plugin.logger.info("Gave wood to " + p);
+			return true;
+		} else if (args[0].equalsIgnoreCase("sword")) {
+			Player p = (Player)sender;
+			PlayerInventory inventory = p.getInventory();
+			ItemStack shovel = new ItemStack(Material.DIAMOND_SWORD);
+			inventory.addItem(shovel);
+			plugin.getLogger().info("you have a sword");
+			plugin.logger.info("Gave Dimand Sword to " + p);
+			return true;
 		} else if (args[0].equalsIgnoreCase("message")
 				&& sender.hasPermission("demo.message")) {
 			this.plugin.getConfig().set("sample.message",
